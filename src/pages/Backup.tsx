@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
+import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 import { useTransactionsContext } from '@/contexts/TransactionsContext';
 import { exportData } from '@/services/exports';
-import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 import type {
     BackupCustomPeriod,
     BackupFormat,
@@ -127,7 +127,7 @@ export const Backup = () => {
         <div className='p-4'>
             <h1 className='text-2xl font-bold mb-4'>Backup</h1>
             <p>Aqui podrás exportar tus datos a CSV.</p>
-            
+
             <div className='mt-4 flex space-x-2 mb-4'>
                 <select
                     className='mr-1 border p-2 rounded'
@@ -181,19 +181,28 @@ export const Backup = () => {
                     />
                 </div>
             )}
-            
+
             {errors && <p className='text-red-500 mb-4'>{errors}</p>}
             <button
                 className='bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600'
                 onClick={handleExport}
             >
-                <DownloadForOfflineIcon fontSize='small' style={{ marginTop: '-4px', marginRight: '4px' }} />
+                <DownloadForOfflineIcon
+                    fontSize='small'
+                    style={{ marginTop: '-4px', marginRight: '4px' }}
+                />
                 Exportar
             </button>
             {findedTransactions > 0 ? (
-                <p className='text-gray-500 p-2'>Se han encontrado <span className='font-semibold'>{findedTransactions}</span> transacciones.</p>
+                <p className='text-gray-500 p-2'>
+                    Se han encontrado{' '}
+                    <span className='font-semibold'>{findedTransactions}</span>{' '}
+                    transacciones.
+                </p>
             ) : (
-                <p className='text-red-500 p-2'>No se han encontrado transacciones.</p>
+                <p className='text-red-500 p-2'>
+                    No se han encontrado transacciones.
+                </p>
             )}
         </div>
     );

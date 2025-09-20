@@ -9,20 +9,26 @@ export const exportData = (data: Transaction[], BackupFormat: BackupFormat) => {
 
     if (BackupFormat === 'csv') {
         // Generamos el CSV pero sin el id de las transacciones.
-        const headers = Object.keys(data[0]).filter((header) => header !== 'id');
+        const headers = Object.keys(data[0]).filter(
+            (header) => header !== 'id'
+        );
         const csvRows = [
             headers.join(','), // Cabecera
             ...data.map((row) =>
                 headers
                     .map((fieldName) => {
-                        const escaped = ('' + row[fieldName as keyof Transaction]).replace(/"/g, '\\"');
+                        const escaped = (
+                            '' + row[fieldName as keyof Transaction]
+                        ).replace(/"/g, '\\"');
                         return `"${escaped}"`;
                     })
                     .join(',')
             ),
         ];
         const csvContent = csvRows.join('\n');
-        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const blob = new Blob([csvContent], {
+            type: 'text/csv;charset=utf-8;',
+        });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
@@ -34,7 +40,9 @@ export const exportData = (data: Transaction[], BackupFormat: BackupFormat) => {
         // Generamos el JSON pero sin el id de las transacciones.
         const dataWithoutId = data.map(({ id, ...rest }) => rest);
         const jsonContent = JSON.stringify(dataWithoutId, null, 2);
-        const blob = new Blob([jsonContent], { type: 'application/json;charset=utf-8;' });
+        const blob = new Blob([jsonContent], {
+            type: 'application/json;charset=utf-8;',
+        });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;

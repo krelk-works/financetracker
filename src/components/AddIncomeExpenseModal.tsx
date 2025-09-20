@@ -5,7 +5,7 @@ import type { Transaction } from '@/types/transaction';
 
 export const AddIncomeExpenseModal = ({ onClose }: { onClose: () => void }) => {
     const [errorMessage, setErrorMessage] = useState('');
-    const { addTransaction, transactions } = useTransactionsContext();
+    const { addTransaction } = useTransactionsContext();
     const { categories } = useCategories();
 
     const handleClickOutside = (e: MouseEvent) => {
@@ -29,9 +29,7 @@ export const AddIncomeExpenseModal = ({ onClose }: { onClose: () => void }) => {
             date: (document.getElementById('date') as HTMLInputElement).value,
             note: (document.getElementById('note') as HTMLInputElement).value,
         };
-        const newIdTransaction = addTransaction(newTransaction);
-        console.log('Transacción añadida con ID:', newIdTransaction);
-        console.log('Transacciones actuales:', transactions);
+        addTransaction(newTransaction);
         // Llamamos a la función onClose para cerrar el modal
         onClose();
     };
@@ -59,7 +57,7 @@ export const AddIncomeExpenseModal = ({ onClose }: { onClose: () => void }) => {
         return true;
     };
 
-    console.log('Categorías disponibles:', categories);
+    // console.log('Categorías disponibles:', categories);
 
     return (
         <div

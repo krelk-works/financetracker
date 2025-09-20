@@ -67,15 +67,6 @@ export function Menu({ onClose }: { onClose: () => void }) {
                                     {label}
                                 </span>
                             </NavLink>
-
-                            {/* Opción B (alternativa): botón que llama navigate() 
-                  <button
-                    className={baseLink}
-                    onClick={() => handleNavigate(path)}
-                  >
-                    {label}
-                  </button>
-              */}
                         </li>
                     ))}
                 </ul>

@@ -46,6 +46,7 @@ export const Categories = () => {
                     id='new-category'
                     type='text'
                     className='border p-2 w-full rounded'
+                    placeholder='Nombre de la categoría'
                 />
                 <button
                     className='mt-2 bg-blue-500 text-white px-4 py-2 rounded'
@@ -60,7 +61,7 @@ export const Categories = () => {
                 {categories.map((cat) => (
                     <li
                         key={cat}
-                        className='flex justify-between items-center border-b py-2'
+                        className='flex justify-between items-center border-b py-2 last:border-0'
                     >
                         <span>{cat}</span>
                         <button
