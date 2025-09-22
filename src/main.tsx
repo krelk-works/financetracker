@@ -8,7 +8,7 @@ import { appRoutes } from './routes';
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <BrowserRouter>
+        <BrowserRouter basename="/financetracker">
             <Routes>
                 <Route path='/' element={<App />}>
                     <Route
